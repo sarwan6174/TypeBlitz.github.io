@@ -1,0 +1,563 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+/* General styles */
+.gradient-bg {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0, #d0d0d0, #a0a0a0, #707070, #404040, #0f0f0f);
+}
+
+/* Download section */
+#download {
+  background: linear-gradient(to bottom, #fcfcfc, #f0f0f0);
+  backdrop-filter: blur(10px);
+  border: 1px solid #eee;
+  padding-bottom: 40px;
+}
+
+/* Carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  color: #000000;
+  transition: all 0.3s ease-in-out;
+  /* Add a smooth transition for hover effect */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #000000;
+  color: #ffffff;
+  /* Change text color on hover */
+}
+
+/* Introduction section */
+#introduction {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  transition: background 0.5s ease-in-out;
+  /* Add a smooth transition for background color change */
+}
+
+#introduction:hover {
+  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+  /* Change background on hover */
+}
+
+/* Screenshots section */
+#screenshots {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  margin-bottom: 40px;
+}
+
+/* Add futuristic animation to screenshots */
+#screenshots img {
+  transition: transform 0.5s ease-in-out;
+  /* Add a smooth transition for image transform */
+}
+
+#screenshots img:hover {
+  transform: scale(1.1);
+  /* Scale the image on hover */
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-inner {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-inner::before,
+.preloader-inner::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: morph 1.5s ease-in-out infinite alternate;
+}
+
+.preloader-inner::after {
+  animation-delay: 0.75s;
+}
+
+.preloader-inner div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes morph {
+
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes preloader {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(0.8);
+  }
+}
+
+/* Scroll button */
+#scrollBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  display: none;
+}
+
+#scrollBtn.up {
+  transform: rotate(180deg);
+}
+
+#scrollBtn:hover {
+  background-color: #555;
+}
+
+/* Navbar */
+.navbar {
+  min-height: 80px;
+}
+
+/* Changing text animation */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Feature cards */
+.screenshot-card {
+  opacity: 0;
+  animation: fade-in 1s;
+  animation-fill-mode: forwards;
+}
+
+/* Animated button */
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.animated-button:hover::before {
+  animation: ripple 1s ease-out;
+}
+
+/* Features section */
+/* Animation for feature items */
+.feature-item {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Animation for icons */
+.feature-item i {
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  transition: transform 0.5s;
+}
+
+/* Animation for feature item content */
+.feature-item h3,
+.feature-item p {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Animation for feature item border */
+.feature-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  transition: border-color 0.5s;
+}
+
+/* Animation for feature item background */
+.feature-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 191, 255, 0);
+  transition: background-color 0.5s;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+}
+
+.feature-item:hover i {
+  transform: scale(1.2);
+}
+
+.feature-item:hover::before {
+  border-color: #00bfff;
+}
+
+.feature-item:hover::after {
+  background-color: rgba(0, 191, 255, 0.1);
+}
+
+
+
+/* Contact form */
+.contact {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 40px;
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.contact-content {
+  display: flex;
+  align-items: center;
+}
+
+.developer-photo {
+  margin-right: 20px;
+  max-width: 100%;
+  max-height: 500px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .developer-photo {
+    max-width: 300px;
+  }
+}
+
+.column.right {
+  flex: 1;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .developer-photo {
+    margin: 0 auto 20px;
+    max-width: 300px;
+  }
+}
+
+/* Image resize for smaller screens */
+@media (max-width: 350px) {
+  .developer-photo {
+    max-width: 100%;
+    max-height: 300px;
+    /* Adjust the max height as needed */
+  }
+}
+
+@media (max-width: 370px) {
+  .developer-photo {
+    max-width: 100%;
+    max-height: 300px;
+    /* Adjust the max height as needed */
+  }
+}
+
+
+/* Footer */
+footer {
+  background: linear-gradient(to right, #0e0e0e, #000);
+  color: #fff;
+  margin-bottom: auto;
+  padding: 5px;
+  animation: gradientAnimation 5s infinite alternate;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    background-position: 100% 50%;
+    transform: rotateY(360deg);
+  }
+}
+
+footer a {
+  color: #e3e622;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #007bff;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+footer .btn-floating {
+  background-color: #fff;
+  color: #212529;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+footer .btn-floating:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+footer hr {
+  border-color: #8c8c8c;
+}
+
+footer .container {
+  max-width: 960px;
+}
+
+footer .text-center {
+  text-align: center;
+}
+
+footer .text-md-left {
+  text-align: left;
+}
+
+footer .text-md-right {
+  text-align: right;
+}
+
+
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: red;
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #0069d9;
+  outline: none;
+}
+
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes preloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    /* Start with full opacity */
+  }
+
+  50% {
+    transform: scale(0.8);
+    /* Scale down a bit halfway */
+    opacity: 0.5;
+    /* Lower opacity */
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    /* Fade out at the end */
+  }
+}
+
+@keyframes morph {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(40);
+    opacity: 0;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}

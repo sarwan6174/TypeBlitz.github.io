@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /.github/
+Disallow: /files/
+Disallow: /production/
+Disallow: /assets/
