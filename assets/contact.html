@@ -9,11 +9,11 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
 
         .contact-form {
@@ -29,11 +29,13 @@
         .contact-form h2 {
             margin-top: 0;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .contact-form label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
 
         .contact-form input,
@@ -93,11 +95,13 @@
 
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
+
             <!-- Hidden fields and submit button -->
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_subject" value="TypeBlitz Contact From App: New Submission!" />
+            <input type="hidden" name="_subject" value="TypeBlitz Contact Form: New Submission!" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://typeblitz.tech/assets/success.html" />
+
             <button type="submit">Send Message</button>
         </form>
     </div>

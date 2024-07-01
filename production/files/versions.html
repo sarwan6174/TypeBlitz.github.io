@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BN5JC7B3SH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,6 +20,7 @@
   <style>
     body {
       background-color: #f8f9fa;
+      padding-top: 60px; /* Add padding to top for better alignment */
     }
 
     .error-template {
@@ -29,11 +30,10 @@
 
     .error-actions {
       margin-top: 15px;
-      margin-bottom: 15px;
     }
 
     .btn {
-      margin-right: 10px;
+      margin-top: 10px;
     }
 
     @media (min-width: 768px) {
@@ -45,6 +45,11 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"> <!-- Added a fixed-top class for a fixed navbar -->
+    <div class="container">
+      <!-- No heading -->
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -52,7 +57,7 @@
           <h1>Oops!</h1>
           <h2>404 Not Found</h2>
           <div class="error-details">
-            Sorry, an error has occurred, Requested page not available!
+            Sorry, the requested page is not available!
           </div>
           <div class="error-actions">
             <a href="https://typeblitz.tech/" class="btn btn-primary btn-lg">Take Me Home</a>
