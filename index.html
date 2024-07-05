@@ -303,31 +303,28 @@
   </button>
 
   <!-- Scripts -->
-
   <script>
-    // Function to check if the device is a phone
+    // Utility Functions
     function isPhone() {
       return window.innerWidth <= 600; // Adjust the width as needed
     }
 
-    // Function to set the background image based on the device
+    function getGreeting() {
+      const hour = new Date().getHours();
+      return hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
+    }
+
+    // Background Image Setup
     function setBackgroundImage() {
       const container = document.getElementById("backgroundImageContainer");
       const imageUrl = isPhone()
         ? "https://p4.wallpaperbetter.com/wallpaper/406/979/698/amiga-retro-games-window-computer-wallpaper-preview.jpg"
         : "https://p4.wallpaperbetter.com/wallpaper/808/313/191/andrew-averkin-retro-computers-retro-games-indoors-office-hd-wallpaper-preview.jpg";
-
       container.style.backgroundImage = `url('${imageUrl}')`;
     }
 
-    // Set the initial background image
-    setBackgroundImage();
-
-    // Update the background image on window resize (for responsiveness)
-    window.addEventListener("resize", setBackgroundImage);
-
-    // Navbar toggle function using jQuery
-    $(document).ready(function () {
+    // Navbar Toggle
+    function setupNavbarToggle() {
       $(".navbar-toggler").on("click", function () {
         $(".navbar-collapse").collapse("toggle");
       });
@@ -335,53 +332,40 @@
       $(".navbar-nav a").on("click", function () {
         $(".navbar-collapse").collapse("hide");
       });
-    });
-
-    // Array of words to display
-    const words = ["Welcome To TypeBlitz"];
-    let index = 0; // Initialize index for cycling through words
-    const changingText = document.getElementById("changing-text"); // Get the HTML element to display changing text
-
-    // Function to get appropriate greeting based on the current hour
-    function getGreeting() {
-      const hour = new Date().getHours();
-      return hour < 12
-        ? "Good Morning"
-        : hour < 18
-          ? "Good Afternoon"
-          : "Good Evening";
     }
 
-    // Update text every 5.2 seconds with the next word and greeting
-    setInterval(() => {
-      const greeting = getGreeting();
-      const text = `${greeting}, ${words[index]}`;
-      changingText.textContent = text;
-      index = (index + 1) % words.length;
-    }, 5200);
+    // Changing Text
+    function setupChangingText() {
+      const words = ["Welcome To TypeBlitz"];
+      let index = 0;
+      const changingText = document.getElementById("changing-text");
 
-    // Popup and scroll scripts
-    document.addEventListener("DOMContentLoaded", function () {
+      setInterval(() => {
+        const greeting = getGreeting();
+        const text = `${greeting}, ${words[index]}`;
+        changingText.textContent = text;
+        index = (index + 1) % words.length;
+      }, 5200);
+    }
+
+    // Popup and Scroll
+    function setupPopupAndScroll() {
       const popupContainer = document.querySelector(".popup-container");
       const closeBtn = document.querySelector(".close-btn");
       const scrollBtn = document.querySelector("#scrollBtn");
 
-      // Display the popup after 5 seconds of page load
-      setTimeout(function () {
+      setTimeout(() => {
         popupContainer.style.display = "block";
-      }, 8000); // Display popup after 5 seconds
+      }, 8000);
 
-      // Close the popup when the close button is clicked
-      closeBtn.addEventListener("click", function () {
+      closeBtn.addEventListener("click", () => {
         popupContainer.style.display = "none";
       });
 
-      // Disable right-click on the page
-      document.addEventListener("contextmenu", function (e) {
+      document.addEventListener("contextmenu", (e) => {
         e.preventDefault();
       });
 
-      // Scroll functionality
       window.addEventListener("scroll", () => {
         const showButton = window.scrollY > window.innerHeight * 0.2;
         scrollBtn.style.display = showButton ? "block" : "none";
@@ -402,53 +386,74 @@
           window.scrollTo({ top: 0, ...scrollOptions });
         }
       });
-    });
+    }
 
-    // Service Worker registration
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/service-worker.js", { scope: "/" })
-          .then((registration) => {
-            console.log("Service worker registered with scope:", registration.scope);
-          })
-          .catch((error) => {
-            console.log("Service worker registration failed:", error);
+    // Service Worker Registration
+    function registerServiceWorker() {
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js", { scope: "/" })
+            .then((registration) => {
+              console.log("Service worker registered with scope:", registration.scope);
+            })
+            .catch((error) => {
+              console.log("Service worker registration failed:", error);
+            });
+        });
+      }
+    }
+
+    // Clear Cookies and Cache
+    function clearCookiesAndCache() {
+      window.addEventListener("beforeunload", () => {
+        document.cookie.split(";").forEach((cookie) => {
+          document.cookie = cookie
+            .replace(/^ +/, "")
+            .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+
+        if (caches && caches.keys) {
+          caches.keys().then((keys) => {
+            keys.forEach((key) => {
+              caches.delete(key);
+            });
           });
+        }
       });
     }
 
-    // Clear Cookies and Cache on page unload
-    window.addEventListener("beforeunload", function () {
-      // Clear cookies
-      document.cookie.split(";").forEach(function (cookie) {
-        document.cookie = cookie
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    // Disable F12 Key
+    function disableF12Key() {
+      document.addEventListener("keydown", (event) => {
+        if (event.keyCode === 123) {
+          event.preventDefault();
+        }
       });
+    }
 
-      // Clear cache (if possible)
-      if (caches && caches.keys) {
-        caches.keys().then(function (keys) {
-          keys.forEach(function (key) {
-            caches.delete(key);
-          });
-        });
-      }
-    });
+    // Preloader
+    function setupPreloader() {
+      $(window).on("load", () => {
+        $(".preloader").fadeOut("slow");
+      });
+    }
 
-    // Disable F12 key (Developer Tools)
-    document.addEventListener("keydown", function (event) {
-      if (event.keyCode === 123) {
-        event.preventDefault();
-      }
-    });
+    // Initialization
+    document.addEventListener("DOMContentLoaded", () => {
+      setBackgroundImage();
+      setupNavbarToggle();
+      setupChangingText();
+      setupPopupAndScroll();
+      registerServiceWorker();
+      clearCookiesAndCache();
+      disableF12Key();
+      setupPreloader();
 
-    // Preloader script
-    $(window).on("load", function () {
-      $(".preloader").fadeOut("slow");
+      window.addEventListener("resize", setBackgroundImage);
     });
   </script>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"
