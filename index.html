@@ -21,39 +21,41 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://typeblitz.tech/">
+
   <!-- Preconnect to external domains for faster resource loading -->
   <link rel="preconnect" href="https://typeblitz.tech">
-  <link rel="preconnect" href="https://typeblitz.netlify.app">
-  <link rel="preconnect" href="https://p4.wallpaperbetter.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://p4.wallpaperbetter.com">
+
+  <!-- Stylesheet Loading -->
   <link rel="stylesheet" href="assets/preloader.css" />
 
   <!-- Preload critical resources for improved performance -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
 
-  <!-- Links to external resources -->
-  <link rel="icon" type="image/x-icon" href="https://typeblitz.netlify.app/assets/img/TypeBlitz.ico" />
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://typeblitz.tech/assets/img/TypeBlitz.ico" />
-  <link rel="manifest" href="manifest.json" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- External Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     integrity="your-correct-bootstrap-integrity-value" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="your-correct-font-awesome-integrity-value" crossorigin="anonymous" />
-  <link rel="canonical" href="https://typeblitz.tech" />
-  <link rel="canonical" href="https://typeblitz.netlify.app" />
 
   <!-- Title of the page -->
   <title>TypeBlitz Official Website</title>
-
 </head>
 
-<body style="--i: 0">
+<body style="--i: 0; color: #333; background-color: #f8f9fa;">
 
   <!-- Preloader -->
   <div class="preloader">
@@ -63,7 +65,7 @@
       <div></div>
     </div>
   </div>
-
+  
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
@@ -86,7 +88,8 @@
 
   <!-- Jumbotron -->
   <section id="jumbotron">
-    <div class="bg-image p-5 text-center shadow-lg rounded mb-5 text-white" id="backgroundImageContainer">
+    <div class="bg-image p-5 text-center shadow-lg rounded mb-5 text-white" id="backgroundImageContainer"
+      style="background-color: #212529;"> <!-- Darkened background for better contrast -->
       <h1 class="display-2" id="changing-text">TypeBlitz</h1>
       <p class="lead">Elevate Your Typing Speed and Accuracy</p>
       <a href="production/redirect.html" class="btn btn-primary btn-lg">Download the Latest Version Now</a>
@@ -102,9 +105,9 @@
           <p class="lead">TypeBlitz is a cutting-edge typing application crafted to elevate your typing speed and
             accuracy. Whether you're just starting out or a seasoned typist, TypeBlitz offers a personalized learning
             experience to help you achieve your typing goals. Engage in dynamic typing exercises with instant feedback
-            to
-            track and improve your progress.</p>
-          <p>Made with ❤️ by <a href="https://ellowdigitals.netlify.app/">EllowDigitals</a></p>
+            to track and improve your progress.</p>
+          <p>Made with ❤️ by <a href="https://ellowdigitals.netlify.app/" target="_blank"
+              rel="noopener noreferrer">EllowDigitals</a></p>
         </div>
       </div>
     </div>
@@ -240,6 +243,8 @@
     </div>
   </section>
 
+
+
   <!-- Contact Section -->
   <section class="contact py-5" id="contact">
     <div class="container">
@@ -283,26 +288,29 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer py-4">
     <div class="max-width">
       <div class="footer-content text-center">
         <div class="social-icons">
-          <a href="https://www.instagram.com/typeblitz/" target="_blank" class="instagram-link">
-            <i class="fab fa-instagram"></i>
+          <a href="https://www.instagram.com/typeblitz/" target="_blank" class="instagram-link"
+            aria-label="Visit TypeBlitz on Instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
           </a>
-          <a href="https://sarwan.netlify.app/" target="_blank" class="developer-link">
-            <i class="fas fa-code"></i>
+          <a href="https://sarwan.netlify.app/" target="_blank" class="developer-link"
+            aria-label="Visit Sarwan Yadav's Developer Portfolio">
+            <i class="fas fa-code" aria-hidden="true"></i>
           </a>
         </div>
         <div class="footer-divider"></div>
         <p>
-          <a href="https://typeblitz.tech/" class="text-white">TypeBlitz</a> &copy; 2024
+          <a href="https://typeblitz.tech/" class="text-white" aria-label="Visit TypeBlitz website">TypeBlitz</a> &copy;
+          2024
           <span class="text-white">Sarwan Yadav</span>. All Rights Reserved.
         </p>
       </div>
     </div>
   </footer>
+
 
   <!-- Popup Container -->
   <div class="popup-container" id="popup">
@@ -331,7 +339,7 @@
       return hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
     }
 
-    // Background Image Setup
+    // UI Setup Functions
     function setBackgroundImage() {
       const container = document.getElementById("backgroundImageContainer");
       const imageUrl = isPhone()
@@ -340,7 +348,6 @@
       container.style.backgroundImage = `url('${imageUrl}')`;
     }
 
-    // Navbar Toggle
     function setupNavbarToggle() {
       $(".navbar-toggler").on("click", function () {
         $(".navbar-collapse").collapse("toggle");
@@ -351,7 +358,6 @@
       });
     }
 
-    // Changing Text
     function setupChangingText() {
       const words = ["Welcome To TypeBlitz"];
       let index = 0;
@@ -365,7 +371,6 @@
       }, 5200);
     }
 
-    // Popup and Scroll
     function setupPopupAndScroll() {
       const popupContainer = document.querySelector(".popup-container");
       const closeBtn = document.querySelector(".close-btn");
@@ -405,7 +410,7 @@
       });
     }
 
-    // Service Worker Registration
+    // System Functions
     function registerServiceWorker() {
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
@@ -421,7 +426,6 @@
       }
     }
 
-    // Clear Cookies and Cache
     function clearCookiesAndCache() {
       window.addEventListener("beforeunload", () => {
         document.cookie.split(";").forEach((cookie) => {
@@ -440,7 +444,6 @@
       });
     }
 
-    // Disable F12 Key
     function disableF12Key() {
       document.addEventListener("keydown", (event) => {
         if (event.keyCode === 123) {
@@ -449,7 +452,6 @@
       });
     }
 
-    // Preloader
     function setupPreloader() {
       $(window).on("load", () => {
         $(".preloader").fadeOut("slow");
