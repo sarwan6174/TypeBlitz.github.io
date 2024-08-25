@@ -2,77 +2,141 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BN5JC7B3SH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-BN5JC7B3SH');
-  </script>
+  <!-- Essential SEO Tags -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Not Found - 404 Error</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Page not found - 404 error on TypeBlitz. The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta name="keywords" content="404 error, page not found, TypeBlitz, error page, TypeBlitz support">
+  <meta name="author" content="Sarwan Yadav">
+  <title>404 Page Not Found | TypeBlitz</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://typeblitz.tech/404">
+  <meta property="og:title" content="404 Page Not Found | TypeBlitz">
+  <meta property="og:description"
+    content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta property="og:image" content="https://typeblitz.tech/assets/404-thumbnail.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://typeblitz.tech/404">
+  <meta property="twitter:title" content="404 Page Not Found | TypeBlitz">
+  <meta property="twitter:description"
+    content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta property="twitter:image" content="https://typeblitz.tech/assets/404-thumbnail.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "404 Page Not Found",
+      "description": "Page not found - 404 error on TypeBlitz.",
+      "url": "https://typeblitz.tech/404"
+    }
+    </script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+
   <!-- Custom CSS -->
   <style>
     body {
       background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 15px;
+      box-sizing: border-box;
     }
 
     .error-template {
-      padding: 40px 15px;
       text-align: center;
+      max-width: 600px;
+      margin: auto;
     }
 
-    .error-actions {
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .error-template h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #343a40;
     }
 
-    .btn {
-      margin-right: 10px;
+    .error-template h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #495057;
     }
 
-    @media (min-width: 768px) {
-      .error-template {
-        padding: 90px 15px;
+    .error-details {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #6c757d;
+    }
+
+    .error-actions .btn {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .error-template h1 {
+        font-size: 3rem;
+      }
+
+      .error-template h2 {
+        font-size: 1.5rem;
+      }
+
+      .error-details {
+        font-size: 1rem;
+      }
+
+      .error-actions .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="error-template">
-          <h1>Oops!</h1>
-          <h2>404 Not Found</h2>
-          <div class="error-details">
-            Sorry, an error has occurred, Requested page not found!
-          </div>
-          <div class="error-actions">
-            <a href="https://typeblitz.tech/" class="btn btn-primary btn-lg">Take Me Home</a>
-            <a href="https://formsubmit.co/el/fokemo" class="btn btn-secondary btn-lg">Contact Support</a>
-          </div>
-        </div>
-      </div>
+  <div class="error-template">
+    <h1>Oops!</h1>
+    <h2>404 Not Found</h2>
+    <div class="error-details">
+      Sorry, the page you are looking for doesn't exist!
+    </div>
+    <div class="error-actions">
+      <a href="https://typeblitz.tech/" class="btn btn-primary">Take Me Home</a>
+      <a href="https://formsubmit.co/el/fokemo" class="btn btn-secondary">Contact Support</a>
     </div>
   </div>
+
   <!-- Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"
+    async></script>
+
+  <!-- LocalStorage Clear -->
   <script>
-    // Clear localStorage before closing the website
     window.addEventListener('beforeunload', function () {
       window.localStorage.clear();
     });
   </script>
+
+  <!-- Simple Analytics -->
   <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
-      referrerpolicy="no-referrer-when-downgrade" /></noscript>
+  <noscript>
+    <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="Simple Analytics tracking"
+      referrerpolicy="no-referrer-when-downgrade" />
+  </noscript>
 </body>
 
 </html>

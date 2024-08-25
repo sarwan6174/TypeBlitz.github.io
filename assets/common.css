@@ -1,12 +1,16 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
+    max-width: 1200px;
+    /* Limits the width for larger screens */
     margin: 0 auto;
     padding: 0 15px;
-    color: #000000
+    color: #000;
 }
 
 .card {
@@ -14,24 +18,36 @@ body {
     box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    color: #282C34;
+    background-color: #fff;
+    /* Ensures a consistent background */
 }
 
 .card-header {
     background-color: #fff;
     color: #818084;
     padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    /* Subtle separation from card body */
 }
 
 #download {
     position: relative;
+    text-align: center;
+    /* Center align the button */
 }
 
 #download .btn {
+    display: inline-block;
+    /* Ensures proper spacing */
     padding: 15px 40px;
     font-size: 18px;
     border-radius: 30px;
-    transition: all 0.5s ease;
+    color: #fff;
+    background: linear-gradient(45deg, #4caf50, #0076ce);
+    /* Gradient for modern look */
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Adjusted transition for smoother effect */
 }
 
 #download .btn:hover {

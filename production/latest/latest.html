@@ -2,48 +2,75 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BN5JC7B3SH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-BN5JC7B3SH');
-    </script>
-    <title>
-        web_upodate_redict
-    </title>
-    <meta http-equiv="refresh" content="1; url=https://typeblitz.netlify.app/production/files/v2.6.html">
     <meta charset="UTF-8">
-    <meta name="description" content="TypeBlitz: Web Update">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Sarwan Yadav">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TypeBlitz: Web Update - Redirecting to the latest download page.">
+    <meta name="keywords" content="TypeBlitz, Web Update, Redirect">
+    <meta name="author" content="Sarwan Yadav">
+    <title>Redirecting to New Download Page</title>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="image/TypeBlitz.ico">
+
+    <!-- SEO and Performance Improvements -->
+    <meta http-equiv="refresh" content="2; url=https://typeblitz.netlify.app/production/files/v2.6.html">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .inb {
+            margin-top: 20px;
+        }
+
+        .pf {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .a1 {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .a1:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
-    <p>you'll be redirected to New Download Page, in 2 seconds.</p>
-    <div class="inb">
-        <p class="pf">
-            The website has been built by
-            <i class="fas fa-heart"></i>
-            <a href="https://sarwan6174.github.io/sarwan.github.io" class="a1">
-                Sarwan Yadav
-            </a>
-        </p>
+    <div>
+        <p>You will be redirected to the new download page in 2 seconds.</p>
+        <div class="inb">
+            <p class="pf">
+                The website has been built with <i class="fas fa-heart"></i> by
+                <a href="https://sarwan6174.github.io/sarwan.github.io" class="a1">Sarwan Yadav</a>
+            </p>
+        </div>
     </div>
-    </footer>
+
+    <!-- Clear localStorage on page unload -->
     <script>
-        // Clear localStorage before closing the website
-        window.addEventListener('beforeunload', function () {
+        window.addEventListener('beforeunload', () => {
             window.localStorage.clear();
         });
     </script>
+
+    <!-- Simple Analytics -->
     <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
-            referrerpolicy="no-referrer-when-downgrade" /></noscript>
+    <noscript>
+        <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="Simple Analytics"
+            referrerpolicy="no-referrer-when-downgrade" />
+    </noscript>
 </body>
 
 </html>
