@@ -305,7 +305,9 @@
         </p>
       </div>
     </div>
+    <div class="color-strip"></div> <!-- Added the colorful strip here -->
   </footer>
+
 
 
   <!-- Popup Container -->
@@ -339,11 +341,23 @@
     // UI Setup Functions
     function setBackgroundImage() {
       const container = document.getElementById("backgroundImageContainer");
-      const imageUrl = isPhone()
-        ? "https://p4.wallpaperbetter.com/wallpaper/406/979/698/amiga-retro-games-window-computer-wallpaper-preview.jpg"
-        : "https://p4.wallpaperbetter.com/wallpaper/808/313/191/andrew-averkin-retro-computers-retro-games-indoors-office-hd-wallpaper-preview.jpg";
-      container.style.backgroundImage = `url('${imageUrl}')`;
+      const phoneImages = ["assets/img/bg1.jpg", "assets/img/bg2.jpg"]; // Two phone images
+      const desktopImages = ["assets/img/bg2.jpg", "assets/img/bg1.jpg"]; // Two desktop images
+      const images = isPhone() ? phoneImages : desktopImages;
+
+      let currentIndex = 0;
+
+      function changeImage() {
+        container.style.backgroundImage = `url('${images[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % images.length; // Toggle between 0 and 1
+      }
+
+      changeImage(); // Set the initial image
+      setInterval(changeImage, 4000); // Change image every 4 seconds
     }
+
+    setBackgroundImage(); // Call the function to start the image loop
+
 
     function setupNavbarToggle() {
       $(".navbar-toggler").on("click", function () {
