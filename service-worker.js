@@ -53,9 +53,14 @@ self.addEventListener("activate", (event) => {
       );
     }).catch((error) => console.error("Cache activation failed:", error))
   );
+  return self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== 'GET') {
+    return; // Only cache GET requests
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
@@ -64,7 +69,7 @@ self.addEventListener("fetch", (event) => {
         }
 
         return fetch(event.request).then((response) => {
-          if (!response || response.status !== 200) {
+          if (!response || response.status !== 200 || response.type !== 'basic') {
             return caches.match("/assets/404.html");
           }
 
@@ -75,7 +80,10 @@ self.addEventListener("fetch", (event) => {
 
           return response;
         }).catch(() => {
-          return caches.match("/assets/offline.html");
+          // Handle offline scenario by checking if it's a navigation request
+          if (event.request.mode === 'navigate') {
+            return caches.match("/assets/offline.html");
+          }
         });
       }).catch((error) => {
         console.error("Fetch failed:", error);
