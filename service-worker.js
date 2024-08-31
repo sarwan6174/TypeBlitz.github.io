@@ -35,6 +35,7 @@ const urlsToCache = [
   "assets/MIT_License.html",
 ];
 
+// Install event: Cache files
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -44,6 +45,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
+// Activate event: Clean up old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -51,43 +53,44 @@ self.addEventListener("activate", (event) => {
         cacheNames.filter(name => name !== CACHE_NAME)
           .map(name => caches.delete(name))
       );
-    }).catch((error) => console.error("Cache activation failed:", error))
+    }).catch((error) => console.error("Cache cleanup failed:", error))
   );
-  return self.clients.claim();
+  self.clients.claim();
 });
 
+// Fetch event: Serve cached or fetch from network
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== 'GET') {
-    return; // Only cache GET requests
+    return; // Skip non-GET requests
   }
 
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request);
+
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      try {
+        const networkResponse = await fetch(event.request);
+
+        // Check if we received a valid response
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+          const responseToCache = networkResponse.clone();
+          cache.put(event.request, responseToCache);
         }
 
-        return fetch(event.request).then((response) => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return caches.match("/assets/404.html");
-          }
-
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-
-          return response;
-        }).catch(() => {
-          // Handle offline scenario by checking if it's a navigation request
-          if (event.request.mode === 'navigate') {
-            return caches.match("/assets/offline.html");
-          }
-        });
-      }).catch((error) => {
-        console.error("Fetch failed:", error);
-        return caches.match("/assets/offline.html");
-      })
+        return networkResponse;
+      } catch (error) {
+        // Handle offline situation
+        if (event.request.mode === 'navigate') {
+          return cache.match("/assets/offline.html");
+        }
+        console.error("Network request failed:", error);
+        return cache.match("/assets/404.html");
+      }
+    })()
   );
 });

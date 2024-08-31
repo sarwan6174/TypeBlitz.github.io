@@ -4,54 +4,61 @@
 <head>
   <!-- Meta Tags -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Enhance your typing skills with TypeBlitz">
-  <meta name="keywords" content="typing, speed, improvement, Sarwan Yadav">
+  <meta name="description"
+    content="Enhance your typing skills with TypeBlitz. Boost your speed and accuracy with our innovative typing practice tool.">
+  <meta name="keywords" content="typing, speed, improvement, TypeBlitz, typing practice, typing tool">
   <meta name="author" content="Sarwan Yadav">
   <meta name="theme-color" content="#000000">
-  <meta name="content-language" content="en-US">
+  <meta name="language" content="en-US">
+  <meta name="robots" content="index, follow">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:url" content="https://typeblitz.tech/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="TypeBlitz Official Website">
-  <meta property="og:description" content="Enhance your typing skills with TypeBlitz">
+  <meta property="og:description"
+    content="Enhance your typing skills with TypeBlitz. Boost your typing speed and accuracy with our comprehensive practice tool.">
   <meta property="og:image" content="https://typeblitz.tech/assets/img/TypeBlitz-512.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TypeBlitz Logo">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://typeblitz.tech/">
 
-  <!-- Preconnect to external domains for faster resource loading -->
+  <!-- Preconnect and DNS Prefetch -->
   <link rel="preconnect" href="https://typeblitz.tech">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://p4.wallpaperbetter.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://p4.wallpaperbetter.com">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://typeblitz.tech/assets/img/TypeBlitz.ico" />
 
-  <!-- External Scripts -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-  <!-- Preload critical resources for improved performance -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-
-  <!-- Stylesheet Loading -->
-  <link rel="stylesheet" href="assets/preloader.css" />
+  <!-- Preload Critical Resources -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    integrity="your-correct-bootstrap-integrity-value" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="your-correct-font-awesome-integrity-value" crossorigin="anonymous" />
+  <link rel="stylesheet" href="assets/preloader.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Title of the page -->
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+    integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+    integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Title -->
   <title>TypeBlitz Official Website</title>
 </head>
 
@@ -330,7 +337,7 @@
   <script>
     // Utility Functions
     function isPhone() {
-      return window.innerWidth <= 600; // Adjust the width as needed
+      return window.innerWidth <= 600;
     }
 
     function getGreeting() {
@@ -341,43 +348,40 @@
     // UI Setup Functions
     function setBackgroundImage() {
       const container = document.getElementById("backgroundImageContainer");
-      const phoneImages = ["assets/img/bg1.jpg", "assets/img/bg2.jpg"]; // Two phone images
-      const desktopImages = ["assets/img/bg2.jpg", "assets/img/bg1.jpg"]; // Two desktop images
-      const images = isPhone() ? phoneImages : desktopImages;
+      const images = isPhone()
+        ? ["assets/img/bg1.jpg", "assets/img/bg2.jpg"]
+        : ["assets/img/bg2.jpg", "assets/img/bg1.jpg"];
 
       let currentIndex = 0;
-
       function changeImage() {
         container.style.backgroundImage = `url('${images[currentIndex]}')`;
-        currentIndex = (currentIndex + 1) % images.length; // Toggle between 0 and 1
+        currentIndex = (currentIndex + 1) % images.length;
       }
 
-      changeImage(); // Set the initial image
-      setInterval(changeImage, 4000); // Change image every 4 seconds
+      changeImage();
+      setInterval(changeImage, 4000);
     }
 
-    setBackgroundImage(); // Call the function to start the image loop
-
-
     function setupNavbarToggle() {
-      $(".navbar-toggler").on("click", function () {
-        $(".navbar-collapse").collapse("toggle");
+      document.querySelector(".navbar-toggler").addEventListener("click", () => {
+        document.querySelector(".navbar-collapse").classList.toggle("show");
       });
 
-      $(".navbar-nav a").on("click", function () {
-        $(".navbar-collapse").collapse("hide");
+      document.querySelectorAll(".navbar-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.querySelector(".navbar-collapse").classList.remove("show");
+        });
       });
     }
 
     function setupChangingText() {
       const words = ["Welcome To TypeBlitz"];
-      let index = 0;
       const changingText = document.getElementById("changing-text");
+      let index = 0;
 
       setInterval(() => {
         const greeting = getGreeting();
-        const text = `${greeting}, ${words[index]}`;
-        changingText.textContent = text;
+        changingText.textContent = `${greeting}, ${words[index]}`;
         index = (index + 1) % words.length;
       }, 5200);
     }
@@ -385,7 +389,7 @@
     function setupPopupAndScroll() {
       const popupContainer = document.querySelector(".popup-container");
       const closeBtn = document.querySelector(".close-btn");
-      const scrollBtn = document.querySelector("#scrollBtn");
+      const scrollBtn = document.getElementById("scrollBtn");
 
       setTimeout(() => {
         popupContainer.style.display = "block";
@@ -400,24 +404,15 @@
       });
 
       window.addEventListener("scroll", () => {
-        const showButton = window.scrollY > window.innerHeight * 0.2;
-        scrollBtn.style.display = showButton ? "block" : "none";
-        scrollBtn.classList.toggle(
-          "up",
-          window.scrollY + window.innerHeight >= document.body.scrollHeight
-        );
+        scrollBtn.style.display = window.scrollY > window.innerHeight * 0.2 ? "block" : "none";
+        scrollBtn.classList.toggle("up", window.scrollY + window.innerHeight >= document.body.scrollHeight);
       });
 
       scrollBtn.addEventListener("click", () => {
-        const scrollOptions = { behavior: "smooth" };
-        if (!scrollBtn.classList.contains("up")) {
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            ...scrollOptions,
-          });
-        } else {
-          window.scrollTo({ top: 0, ...scrollOptions });
-        }
+        window.scrollTo({
+          top: scrollBtn.classList.contains("up") ? 0 : document.body.scrollHeight,
+          behavior: "smooth"
+        });
       });
     }
 
@@ -425,43 +420,22 @@
     function registerServiceWorker() {
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/service-worker.js", { scope: "/" })
+          navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
             .then((registration) => {
-              // Force update check when the page loads
               registration.update();
-
-              // Listen for updates and reload the page if a new service worker is installed
               registration.onupdatefound = () => {
                 const newWorker = registration.installing;
                 newWorker.onstatechange = () => {
-                  if (newWorker.state === 'installed') {
-                    if (navigator.serviceWorker.controller) {
-                      // New update available, show a notification or reload the page
-                      window.location.reload();
-                    }
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    window.location.reload();
                   }
                 };
               };
               console.log("Service worker registered with scope:", registration.scope);
             })
             .catch((error) => {
-              console.log("Service worker registration failed:", error);
+              console.error("Service worker registration failed:", error);
             });
-        });
-      }
-    }
-
-    function clearCookiesAndCache() {
-      // Clear only specific outdated caches (if necessary)
-      if (caches && caches.keys) {
-        caches.keys().then((keys) => {
-          keys.forEach((key) => {
-            // Example: Clear caches older than a specific date
-            if (key !== 'your-current-cache-name') {
-              caches.delete(key);
-            }
-          });
         });
       }
     }
@@ -475,8 +449,8 @@
     }
 
     function setupPreloader() {
-      $(window).on("load", () => {
-        $(".preloader").fadeOut("slow");
+      window.addEventListener("load", () => {
+        document.querySelector(".preloader").style.display = "none";
       });
     }
 
@@ -487,22 +461,12 @@
       setupChangingText();
       setupPopupAndScroll();
       registerServiceWorker();
-      clearCookiesAndCache();
       disableF12Key();
       setupPreloader();
 
       window.addEventListener("resize", setBackgroundImage);
     });
   </script>
-
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"
-    defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"
-    defer></script>
 
 </body>
 
