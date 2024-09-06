@@ -4,31 +4,34 @@ const urlsToCache = [
   "index.html",
   "manifest.json",
   "robots.txt",
-
   // Files in the production directory
   "production/files/giphy.gif",
   "production/files/v1.2.html",
   "production/files/v1.4.html",
   "production/redirect.html",
   "production/version.txt",
-
   // Asset images
-  "assets/img/TypeBlitz-128.png",
-  "assets/img/TypeBlitz-192.png",
-  "assets/img/TypeBlitz-512.png",
-  "assets/img/TypeBlitz-512-modified.png",
-  "assets/img/TypeBlitz.ico",
-
+  "assets/images/img/apple-touch-icon.png",
+  "assets/images/img/bg1.webp",
+  "assets/images/img/bg2.webp",
+  "assets/images/img/favicon-16x16.png",
+  "assets/images/img/favicon-16x16.png",
+  "assets/images/img/favicon-32x32.png",
+  "assets/images/img/favicon-96x96.png",
+  "assets/images/img/favicon.ico",
+  "assets/images/img/TypeBlitz-128.png",
+  "assets/images/img/TypeBlitz-192.png",
+  "assets/images/img/TypeBlitz-512.png",
+  "assets/images/img/TypeBlitz-512-modified.png",
   // Screenshots
-  "assets/screenshots/1.png",
-  "assets/screenshots/2.png",
-  "assets/screenshots/3.png",
-  "assets/screenshots/4.png",
-  "assets/screenshots/5.png",
-  "assets/screenshots/6.png",
-
+  "assets/images/app_previews/1.webp",
+  "assets/images/app_previews/2.webp",
+  "assets/images/app_previews/3.webp",
+  "assets/images/app_previews/4.webp",
+  "assets/images/app_previews/5.webp",
+  "assets/images/app_previews/6.webp",
   // CSS and other pages
-  "assets/preloader.css",
+  "assets/css/style.css",
   "assets/common.css",
   "assets/404.html",
   "assets/offline.html",
@@ -38,22 +41,38 @@ const urlsToCache = [
 // Install event: Cache files
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
-      .then(() => self.skipWaiting())
-      .catch((error) => console.error("Cache installation failed:", error))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      try {
+        await Promise.all(
+          urlsToCache.map(async (url) => {
+            try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+              }
+              await cache.put(url, response);
+            } catch (error) {
+              console.error(error.message);
+            }
+          })
+        );
+        self.skipWaiting();
+      } catch (error) {
+        console.error("Cache installation failed:", error);
+      }
+    })
   );
 });
 
 // Activate event: Clean up old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.filter(name => name !== CACHE_NAME)
-          .map(name => caches.delete(name))
-      );
-    }).catch((error) => console.error("Cache cleanup failed:", error))
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
+      )
+    ).catch((error) => console.error("Cache cleanup failed:", error))
   );
   self.clients.claim();
 });
@@ -76,15 +95,13 @@ self.addEventListener("fetch", (event) => {
       try {
         const networkResponse = await fetch(event.request);
 
-        // Check if we received a valid response
-        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+        if (networkResponse.ok && networkResponse.type === 'basic') {
           const responseToCache = networkResponse.clone();
           cache.put(event.request, responseToCache);
         }
 
         return networkResponse;
       } catch (error) {
-        // Handle offline situation
         if (event.request.mode === 'navigate') {
           return cache.match("/assets/offline.html");
         }
