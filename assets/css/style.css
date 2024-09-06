@@ -7,9 +7,8 @@
 
 /* Body */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f0f0f0;
-  /* Use solid color for simplicity */
   padding: 20px;
   overflow-x: hidden;
 }
@@ -17,7 +16,6 @@ body {
 /* General Styles */
 .gradient-bg {
   background: linear-gradient(to bottom, #fff, #f0f0f0);
-  /* Simplified gradient */
 }
 
 /* Navbar */
@@ -144,6 +142,8 @@ body {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
+  color: #000;
+  /* Changed text color to black */
   transition: background-color 0.3s;
 }
 
@@ -283,7 +283,8 @@ body {
   right: 20px;
   z-index: 99;
   background-color: #000;
-  color: #fff;
+  color: #000;
+  /* Changed text color to black */
   border: none;
   outline: none;
   cursor: pointer;
@@ -304,24 +305,20 @@ body {
 .contact {
   padding: 50px 0;
   background-color: #f9f9f9;
-  /* Lighter background for a cleaner look */
 }
 
 .section-box {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px;
-  /* Increased padding for more breathing space */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background: #ffffff;
   border-radius: 12px;
-  /* Slightly increased border radius for modern look */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section-box:hover {
   transform: translateY(-8px);
-  /* Slightly more pronounced hover effect */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -334,11 +331,9 @@ body {
 }
 
 .title::after {
-  content: '';
+  content: "";
   width: 60px;
-  /* Increased underline width for better emphasis */
   height: 4px;
-  /* Slightly thicker underline */
   background: #007bff;
   display: block;
   margin: 10px auto 0;
@@ -358,12 +353,10 @@ body {
 .form-container {
   width: 100%;
   max-width: 700px;
-  /* Increased max-width for better form layout */
 }
 
 .form-label {
   font-weight: 600;
-  /* Slightly bolder label text */
   color: #333;
   margin-bottom: 5px;
 }
@@ -375,7 +368,6 @@ body {
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  /* Increased border radius for a smoother appearance */
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -383,19 +375,17 @@ body {
 .form-control:focus {
   border-color: #007bff;
   box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
-  /* Slightly more subtle focus effect */
 }
 
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  /* Slightly wider button for better balance */
   font-size: 1rem;
-  color: #ffffff;
+  color: #000;
+  /* Changed text color to black */
   background-color: #007bff;
   border: none;
   border-radius: 6px;
-  /* Match border radius with form inputs */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -411,10 +401,8 @@ body {
 
 .invalid-feedback {
   color: #dc3545;
-  /* More standard error color */
   font-size: 0.875rem;
 }
-
 
 @media (max-width: 768px) {
   .section-box {
@@ -432,7 +420,6 @@ body {
   color: #fff;
   position: relative;
   padding-bottom: 8px;
-  /* Space for the color strip */
 }
 
 .max-width {
@@ -502,17 +489,6 @@ body {
   }
 }
 
-/* Animation for the colorful strip */
-@keyframes color-strip-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
 /* Styling for the footer content */
 .footer-content {
   position: relative;
@@ -570,7 +546,8 @@ body {
   display: inline-block;
   padding: 10px 20px;
   background-color: #007bff;
-  color: #fff;
+  color: #000;
+  /* Changed text color to black */
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
@@ -586,6 +563,7 @@ body {
   right: 10px;
   background-color: transparent;
   color: #000;
+  /* Changed text color to black */
   font-size: 24px;
   border: none;
   cursor: pointer;
@@ -632,9 +610,3 @@ body {
     background: linear-gradient(180deg, #ff7e5f, #feb47b);
   }
 }
-
-/* For Firefox */
-scrollbar-color: #ff7e5f #f1f1f1;
-/* scrollbar thumb color, scrollbar track color */
-scrollbar-width: thin;
-/* Thin scrollbar */

@@ -7,7 +7,11 @@ function isPhone() {
 
 function getGreeting() {
     const hour = new Date().getHours();
-    return hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
+    return hour < 12
+        ? "Good Morning"
+        : hour < 18
+            ? "Good Afternoon"
+            : "Good Evening";
 }
 
 // UI Setup Functions
@@ -37,7 +41,7 @@ function setupNavbarToggle() {
             navbarCollapse.classList.toggle("show");
         });
 
-        document.querySelectorAll(".navbar-nav a").forEach(link => {
+        document.querySelectorAll(".navbar-nav a").forEach((link) => {
             link.addEventListener("click", () => {
                 navbarCollapse.classList.remove("show");
             });
@@ -79,14 +83,20 @@ function setupPopupAndScroll() {
         });
 
         window.addEventListener("scroll", () => {
-            scrollBtn.style.display = window.scrollY > window.innerHeight * 0.2 ? "block" : "none";
-            scrollBtn.classList.toggle("up", window.scrollY + window.innerHeight >= document.body.scrollHeight);
+            scrollBtn.style.display =
+                window.scrollY > window.innerHeight * 0.2 ? "block" : "none";
+            scrollBtn.classList.toggle(
+                "up",
+                window.scrollY + window.innerHeight >= document.body.scrollHeight
+            );
         });
 
         scrollBtn.addEventListener("click", () => {
             window.scrollTo({
-                top: scrollBtn.classList.contains("up") ? 0 : document.body.scrollHeight,
-                behavior: "smooth"
+                top: scrollBtn.classList.contains("up")
+                    ? 0
+                    : document.body.scrollHeight,
+                behavior: "smooth",
             });
         });
     }
@@ -96,18 +106,25 @@ function setupPopupAndScroll() {
 function registerServiceWorker() {
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-            navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
+            navigator.serviceWorker
+                .register("/service-worker.js", { scope: "/" })
                 .then((registration) => {
                     registration.update();
                     registration.onupdatefound = () => {
                         const newWorker = registration.installing;
                         newWorker.onstatechange = () => {
-                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            if (
+                                newWorker.state === "installed" &&
+                                navigator.serviceWorker.controller
+                            ) {
                                 window.location.reload();
                             }
                         };
                     };
-                    console.log("Service worker registered with scope:", registration.scope);
+                    console.log(
+                        "Service worker registered with scope:",
+                        registration.scope
+                    );
                 })
                 .catch((error) => {
                     console.error("Service worker registration failed:", error);
