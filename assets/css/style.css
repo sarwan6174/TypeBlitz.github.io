@@ -416,7 +416,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   position: relative;
   padding-bottom: 8px;
@@ -496,8 +496,10 @@ body {
 }
 
 /* Popup */
+/* Popup Container Styling */
 .popup-container {
   display: none;
+  /* Initially hidden */
   position: fixed;
   top: 0;
   left: 0;
@@ -507,6 +509,7 @@ body {
   z-index: 9999;
 }
 
+/* Popup Content Styling */
 .popup-content {
   position: absolute;
   top: 50%;
@@ -522,6 +525,7 @@ body {
   animation: popup-fade-in 0.5s ease-in-out forwards;
 }
 
+/* Popup Fade-in Animation */
 @keyframes popup-fade-in {
   from {
     opacity: 0;
@@ -534,6 +538,7 @@ body {
   }
 }
 
+/* Heading and Paragraph Styles */
 .popup-content h2 {
   margin-bottom: 10px;
 }
@@ -542,12 +547,12 @@ body {
   margin-bottom: 20px;
 }
 
+/* Button Styles */
 .popup-content .btn {
   display: inline-block;
   padding: 10px 20px;
   background-color: #007bff;
   color: #000;
-  /* Changed text color to black */
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s;
@@ -557,16 +562,58 @@ body {
   background-color: #0056b3;
 }
 
-.close-btn {
+/* Close Button Styling */
+.btn-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  color: #000;
-  /* Changed text color to black */
-  font-size: 24px;
-  border: none;
+  top: 1rem;
+  right: 1rem;
+  background-color: #f8f9fa;
+  color: #333;
+  font-size: 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-close:hover {
+  color: #ff4d4d;
+  background-color: rgba(255, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.btn-close:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .btn-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
 }
 
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
@@ -582,6 +629,7 @@ body {
   background: linear-gradient(180deg, #ff7e5f, #feb47b);
   border-radius: 6px;
   transition: background 0.3s ease-in-out;
+  animation: color-change 2s infinite;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -590,11 +638,6 @@ body {
 
 ::-webkit-scrollbar-thumb:active {
   background: linear-gradient(180deg, #feb47b, #ff7e5f);
-}
-
-/* Adding a scroll animation */
-::-webkit-scrollbar-thumb {
-  animation: color-change 2s infinite;
 }
 
 @keyframes color-change {
@@ -609,4 +652,18 @@ body {
   100% {
     background: linear-gradient(180deg, #ff7e5f, #feb47b);
   }
+}
+
+#scrollBtn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#scrollBtn:hover {
+  background-color: #007bff;
 }

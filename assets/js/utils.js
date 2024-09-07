@@ -83,6 +83,7 @@ function setupPopupAndScroll() {
         });
 
         window.addEventListener("scroll", () => {
+            console.log('Scroll event detected. ScrollY:', window.scrollY);
             scrollBtn.style.display =
                 window.scrollY > window.innerHeight * 0.2 ? "block" : "none";
             scrollBtn.classList.toggle(
@@ -101,6 +102,7 @@ function setupPopupAndScroll() {
         });
     }
 }
+
 
 // System Functions
 function registerServiceWorker() {
