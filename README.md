@@ -22,6 +22,6 @@ TypeBlitz stands as a pioneering typing application, meticulously designed to el
 
 ## Feedback
 
-We are dedicated to continuously enhancing the TypeBlitz experience and value your feedback. Please feel free to share any suggestions or report any issues you encounter while using TypeBlitz at [sarwanyadav6174@gmail.com](mailto:sarwanyadav6174@gmail.com).
+We are dedicated to continuously enhancing the TypeBlitz experience and value your feedback. Please feel free to share any suggestions or report any issues you encounter while using TypeBlitz at [sarwanyadav6174@gmail.com](mailto:ellowdigitials@gmail.com).
 
 ### Thank you for choosing TypeBlitz to elevate your typing skills!
