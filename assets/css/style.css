@@ -265,6 +265,7 @@ body {
 }
 
 @keyframes preloader {
+
   0%,
   100% {
     transform: scale(1);
@@ -466,16 +467,14 @@ body {
   left: 0;
   width: 100%;
   height: 8px;
-  background: linear-gradient(
-    90deg,
-    #000000,
-    #cccccc,
-    #000000,
-    #dddddd,
-    #000000,
-    #ffffff,
-    #000000
-  );
+  background: linear-gradient(90deg,
+      #000000,
+      #cccccc,
+      #000000,
+      #dddddd,
+      #000000,
+      #ffffff,
+      #000000);
   background-size: 200% 100%;
   animation: color-strip-animation 10s linear infinite;
 }

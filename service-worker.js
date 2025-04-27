@@ -1,31 +1,31 @@
-const CACHE_NAME = "my-app-cache-v2";  // Incremented cache version
+const CACHE_NAME = "my-app-cache-v1";
 const urlsToCache = [
   "/",
   "index.html",
   "manifest.json",
   "robots.txt",
+  // Files in the production directory
   "production/files/giphy.gif",
   "production/files/v1.2.html",
   "production/files/v1.4.html",
   "production/redirect.html",
   "production/version.txt",
-  "assets/images/img/apple-touch-icon.png",
+  // Asset images
+  "assets/images/favicon/apple-touch-icon.png",
   "assets/images/img/bg1.webp",
   "assets/images/img/bg2.webp",
-  "assets/images/img/favicon-16x16.png",
-  "assets/images/img/favicon-32x32.png",
-  "assets/images/img/favicon-96x96.png",
-  "assets/images/img/favicon.ico",
-  "assets/images/img/TypeBlitz-128.png",
-  "assets/images/img/TypeBlitz-192.png",
-  "assets/images/img/TypeBlitz-512.png",
-  "assets/images/img/TypeBlitz-512-modified.png",
+  "assets/images/favicon/favicon.ico",
+  "assets/images/favicon/web-app-manifest-192x192.png",
+  "assets/images/favicon/web-app-manifest-512x512.png",
+  "assets/images/favicon/favicon..svg",
+  // Screenshots
   "assets/images/app_previews/1.webp",
   "assets/images/app_previews/2.webp",
   "assets/images/app_previews/3.webp",
   "assets/images/app_previews/4.webp",
   "assets/images/app_previews/5.webp",
   "assets/images/app_previews/6.webp",
+  // CSS and other pages
   "assets/css/style.css",
   "assets/common.css",
   "assets/404.html",
@@ -33,25 +33,46 @@ const urlsToCache = [
   "assets/MIT_License.html",
 ];
 
-// Install event: Cache files and update versioned cache
+// Function to check if all URLs are available in the cache
+async function checkCachePresence() {
+  const cache = await caches.open(CACHE_NAME);
+
+  // Check if all URLs are present in the cache
+  const missingFiles = [];
+
+  for (let url of urlsToCache) {
+    const response = await cache.match(url);
+    if (!response) {
+      missingFiles.push(url);
+    }
+  }
+
+  if (missingFiles.length === 0) {
+    console.log("All files are present in the cache.");
+  } else {
+    console.log("Missing files:", missingFiles);
+  }
+}
+
+// Install event: Cache files
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
       try {
-        const cachePromises = urlsToCache.map(async (url) => {
-          try {
-            const response = await fetch(url);
-            if (!response.ok) {
-              throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+        await Promise.all(
+          urlsToCache.map(async (url) => {
+            try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+              }
+              await cache.put(url, response);
+            } catch (error) {
+              console.error(error.message);
             }
-            await cache.put(url, response);
-          } catch (error) {
-            console.error(`Error caching ${url}:`, error.message);
-          }
-        });
-
-        await Promise.all(cachePromises);
-        self.skipWaiting(); // Immediately activate the new service worker
+          })
+        );
+        self.skipWaiting();
       } catch (error) {
         console.error("Cache installation failed:", error);
       }
@@ -64,18 +85,17 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
-        cacheNames
-          .filter((name) => name !== CACHE_NAME)
+        cacheNames.filter((name) => name !== CACHE_NAME)
           .map((name) => caches.delete(name))
       )
     ).catch((error) => console.error("Cache cleanup failed:", error))
   );
-  self.clients.claim(); // Take control of all clients immediately
+  self.clients.claim();
 });
 
-// Fetch event: Serve cached or fetch from network, recache when online
+// Fetch event: Serve cached or fetch from network
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") {
+  if (event.request.method !== 'GET') {
     return; // Skip non-GET requests
   }
 
@@ -85,38 +105,25 @@ self.addEventListener("fetch", (event) => {
       const cachedResponse = await cache.match(event.request);
 
       if (cachedResponse) {
-        // Return cached response immediately
         return cachedResponse;
       }
 
       try {
         const networkResponse = await fetch(event.request);
 
-        // If the request is successful and from a basic origin, recache it
-        if (networkResponse.ok && networkResponse.type === "basic") {
+        if (networkResponse.ok && networkResponse.type === 'basic') {
           const responseToCache = networkResponse.clone();
           cache.put(event.request, responseToCache);
         }
 
         return networkResponse;
       } catch (error) {
-        console.error("Network request failed:", error);
-
-        if (event.request.mode === "navigate") {
-          // Fallback to offline page if navigating and no network
+        if (event.request.mode === 'navigate') {
           return cache.match("/assets/offline.html");
         }
-
-        // Fallback to 404 page for other types of requests
+        console.error("Network request failed:", error);
         return cache.match("/assets/404.html");
       }
     })()
   );
-});
-
-// Handle update/refresh behavior (recache on refresh)
-self.addEventListener("message", (event) => {
-  if (event.data === "skipWaiting") {
-    self.skipWaiting(); // Activate the new service worker immediately
-  }
 });

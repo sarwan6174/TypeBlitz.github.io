@@ -9,9 +9,9 @@
   <meta name="theme-color" content="#000000">
   <title>Offline Page</title>
 
-  <!-- Load Bootstrap CSS with integrity and crossorigin attributes -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-pzjw8f+ua7Kw1TIq0v8Fq+3xOSfq1X1N6F6Bh7VE+69RsV9Rr4IaI71p+th9zzM" crossorigin="anonymous">
+  <!-- Load Bootstrap CSS from a CDN with integrity and crossorigin attributes -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ775PCpHbiHzl6rYcD1uVZv/et3URy9Bv1W" crossorigin="anonymous">
 
   <style>
     body {
@@ -27,51 +27,12 @@
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #dc3545;
+      margin-bottom: 1rem;
     }
 
     p {
       font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    .retry-btn {
-      font-size: 1.1rem;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .retry-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .retry-btn:focus {
-      outline: none;
-      box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);
-    }
-
-    .spinner-border {
-      margin-top: 1rem;
-    }
-
-    @media only screen and (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1.1rem;
-      }
-
-      .retry-btn {
-        font-size: 1rem;
-      }
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
@@ -80,48 +41,15 @@
   <div>
     <h1>Oops! You're Offline.</h1>
     <p>Please check your internet connection and try again.</p>
-    <button class="retry-btn" id="retryButton">Retry</button>
-    <div class="spinner-border text-primary" id="spinner" style="display: none;"></div>
   </div>
 
   <script>
-    const retryButton = document.getElementById('retryButton');
-    const spinner = document.getElementById('spinner');
-
-    // Retry button click handler
-    retryButton.addEventListener('click', function () {
-      retryButton.style.display = 'none';
-      spinner.style.display = 'inline-block';
-
-      // Try to reconnect by checking if the user is online
-      if (navigator.onLine) {
-        window.location.reload();
-      } else {
-        setTimeout(() => {
-          spinner.style.display = 'none';
-          retryButton.style.display = 'inline-block';
-          alert('Still offline. Please check your connection and try again.');
-        }, 5000);
-      }
-    });
-
-    // Handle the beforeunload event to clear localStorage
+    // Clear localStorage before closing the website
     window.addEventListener('beforeunload', function () {
       window.localStorage.clear();
     });
-
-    // Check if the user is online and handle visibility of retry button accordingly
-    window.addEventListener('online', () => {
-      retryButton.style.display = 'inline-block';
-      spinner.style.display = 'none';
-    });
-
-    window.addEventListener('offline', () => {
-      retryButton.style.display = 'none';
-      spinner.style.display = 'none';
-    });
   </script>
-
+  
 </body>
 
 </html>
