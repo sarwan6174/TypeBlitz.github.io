@@ -92,13 +92,11 @@
 </head>
 
 <body style="--i: 0; color: #333; background-color: #f8f9fa;">
-
   <!-- Preloader Section -->
   <div class="preloader">
     <div class="preloader-inner">
-      <div></div>
-      <div></div>
-      <div></div>
+      <img src="assets/images/TypeBlitz_gif.gif" alt="Loading..." class="preloader-gif" />
+      <div class="loading-text">Loading...</div> <!-- Text at the bottom -->
     </div>
   </div>
 
@@ -362,6 +360,31 @@
   <button id="scrollBtn" type="button">
     <i class="fas fa-chevron-down"></i>
   </button>
+  <script>
+    // Wait for the entire window to load (including images, scripts, etc.)
+    window.addEventListener('load', function () {
+      const preloader = document.querySelector('.preloader');
+
+      // Fade out the preloader once the page has fully loaded
+      setTimeout(function () {
+        preloader.style.opacity = '0'; // Fade out the preloader
+        preloader.style.visibility = 'hidden'; // Hide the preloader after fading out
+      }, 500); // Adjust the timeout if you want to keep the preloader visible for longer
+
+      // Optional: Handle cases where the page load might take longer
+      let timeout = setTimeout(function () {
+        preloader.style.opacity = '0'; // Fade out after 10 seconds if loading takes too long
+        preloader.style.visibility = 'hidden';
+      }, 10000); // 10-second timeout
+
+      // Clear the timeout if the page loads before 10 seconds
+      window.addEventListener('load', function () {
+        clearTimeout(timeout); // Cancel the timeout if page loads before 10 seconds
+      });
+    });
+
+
+  </script>
 
 </body>
 
