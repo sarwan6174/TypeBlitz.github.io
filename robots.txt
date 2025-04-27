@@ -1,5 +1,59 @@
+# Advanced Robots.txt for efficient crawling and indexing
+
+# Allow all web crawlers access to all the necessary resources
 User-agent: *
-Disallow: /.github/
-Disallow: /files/
-Disallow: /production/
-Disallow: /assets/
+Crawl-delay: 10  # Adds a 10-second delay between requests from any crawler
+Disallow: /production/  # Block the production directory for crawlers
+Disallow: /assets/images/  # Block the entire images folder for better SEO focus
+Disallow: /assets/css/  # Block CSS folder (assuming you're optimizing CSS delivery)
+Disallow: /assets/common.css  # Specific file not needed for indexing
+Disallow: /assets/404.html  # Prevent indexing of error page
+Disallow: /assets/offline.html  # Prevent indexing of offline page
+Disallow: /assets/MIT_License.html  # Prevent licensing file from indexing
+Disallow: /assets/js/  # Block JS folder (can be dynamically loaded)
+Disallow: /assets/fonts/  # Block fonts folder (should not be indexed)
+Disallow: /assets/tmp/  # Block temporary files directory
+
+# Allow specific paths for crawling (resources necessary for web app)
+Allow: /index.html  # Always allow the homepage
+Allow: /manifest.json  # Allow web app manifest for better integration
+Allow: /robots.txt  # Allow robots.txt itself for compliance
+Allow: /assets/images/favicon/apple-touch-icon.png  # Allow favicons and app icons
+Allow: /assets/images/favicon/favicon.ico
+Allow: /assets/images/favicon/web-app-manifest-192x192.png
+Allow: /assets/images/favicon/web-app-manifest-512x512.png
+Allow: /assets/images/favicon/favicon..svg
+
+# Allow certain dynamic files for proper web functionality
+Allow: /production/files/giphy.gif  # Animated GIFs that might be useful for social media crawling
+Allow: /production/files/v1.2.html  # Dynamic versioned HTML files
+Allow: /production/files/v1.4.html  # Another important production file
+Allow: /production/redirect.html  # File used for redirections
+Allow: /production/version.txt  # Version file to keep track of current version
+
+# Allow app preview images (for enhanced social media sharing and previews)
+Allow: /assets/images/app_previews/1.webp
+Allow: /assets/images/app_previews/2.webp
+Allow: /assets/images/app_previews/3.webp
+Allow: /assets/images/app_previews/4.webp
+Allow: /assets/images/app_previews/5.webp
+Allow: /assets/images/app_previews/6.webp
+
+# Block unnecessary subdirectories
+Disallow: /staging/  # Block staging directory, if it exists
+Disallow: /temp/  # Block temp folder, which may contain unnecessary files
+
+# Specific User-agent settings for popular crawlers
+
+# Googlebot-specific settings (Google)
+User-agent: Googlebot
+Disallow: /staging/  # Block staging version for Googlebot
+
+# Bingbot-specific settings (Bing)
+User-agent: Bingbot
+Crawl-delay: 5  # Shorter delay for Bingbot
+Disallow: /temp/  # Block temp directory for Bingbot
+
+# Provide a link to the sitemap for better indexing
+Sitemap: https://www.example.com/sitemap.xml
+
