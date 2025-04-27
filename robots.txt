@@ -1,5 +1,9 @@
 User-agent: *
-Disallow: /.github/
-Disallow: /files/
-Disallow: /production/
-Disallow: /assets/
+# Disallow access to sensitive directories
+Disallow: /assets/              # Prevent indexing of assets folder
+Disallow: /files/               # Prevent indexing of files folder
+Disallow: /production/          # Prevent indexing of production-specific files
+Disallow: /.github/             # Prevent indexing of GitHub-related files
+
+# Optional: Allow specific subdirectories or pages if needed
+# Allow: /assets/images/        # Example to allow indexing of images inside assets

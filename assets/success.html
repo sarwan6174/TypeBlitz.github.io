@@ -4,32 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="description" content="Your message has been successfully sent.">
     <meta name="theme-color" content="#00ff26">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://typeblitz.netlify.app/success-page">
+    <title>Success Page | TypeBlitz</title>
 
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Custom Styles -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
+            overflow: hidden;
         }
 
-        .success-message,
-        .loader-wrapper {
-            display: none;
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             padding: 20px;
             background-color: #4CAF50;
             color: white;
@@ -38,13 +40,25 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        .success-message i {
-            font-size: 3em;
+        .message-container i {
+            font-size: 4em;
             margin-bottom: 10px;
         }
 
+        .message-container p {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
         .loader-wrapper {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
         }
 
         .loader {
@@ -77,7 +91,7 @@
         }
 
         @media only screen and (max-width: 600px) {
-            .success-message {
+            .message-container {
                 padding: 15px;
             }
 
@@ -85,38 +99,52 @@
                 width: 50px;
                 height: 50px;
             }
+
+            .message-container i {
+                font-size: 3em;
+            }
+
+            .message-container p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="success-message" id="successMessage">
+    <!-- Success message container -->
+    <div class="message-container" id="successMessage">
         <i class="fas fa-check-circle"></i>
         <p>Your message has been sent successfully.</p>
     </div>
 
+    <!-- Loader wrapper (initially hidden) -->
     <div class="loader-wrapper" id="loaderWrapper">
         <div class="loader"></div>
     </div>
 
+    <!-- JavaScript for Success Page Behavior -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const successMessage = document.getElementById('successMessage');
             const loaderWrapper = document.getElementById('loaderWrapper');
 
-            successMessage.style.display = 'block';
+            // Display success message initially
+            successMessage.style.display = 'flex';
+
+            // After 4 seconds, hide the success message and show the loader
             setTimeout(() => {
                 successMessage.style.display = 'none';
                 loaderWrapper.style.display = 'flex';
+
+                // After another 4 seconds, redirect to the home page
                 setTimeout(() => {
                     window.location.href = 'https://typeblitz.netlify.app/';
-                    setTimeout(() => {
-                        window.location.href = 'https://typeblitz.netlify.app/';
-                    }, 5000);
                 }, 4000);
             }, 4000);
         });
     </script>
+
 </body>
 
 </html>

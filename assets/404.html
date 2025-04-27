@@ -5,8 +5,7 @@
   <!-- Essential SEO Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Page not found - 404 error on TypeBlitz. The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta name="description" content="Page not found - 404 error on TypeBlitz. The page you are looking for doesn't exist. Return to the homepage or contact support.">
   <meta name="keywords" content="404 error, page not found, TypeBlitz, error page, TypeBlitz support">
   <meta name="author" content="Sarwan Yadav">
   <meta name="theme-color" content="#e20606">
@@ -16,16 +15,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://typeblitz.netlify.app/404">
   <meta property="og:title" content="404 Page Not Found | TypeBlitz">
-  <meta property="og:description"
-    content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
-  <meta property="og:image" content="https://typeblitz.tech/assets/404-thumbnail.jpg">
+  <meta property="og:description" content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta property="og:image" content="https://typeblitz.netlify.app/assets/404-thumbnail.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://typeblitz.netlify.app/404">
   <meta property="twitter:title" content="404 Page Not Found | TypeBlitz">
-  <meta property="twitter:description"
-    content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
+  <meta property="twitter:description" content="The page you are looking for doesn't exist. Return to the homepage or contact support.">
   <meta property="twitter:image" content="https://typeblitz.netlify.app/assets/404-thumbnail.jpg">
 
   <!-- Structured Data -->
@@ -37,7 +34,7 @@
       "description": "Page not found - 404 error on TypeBlitz.",
       "url": "https://typeblitz.netlify.app/404"
     }
-    </script>
+  </script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
@@ -70,7 +67,7 @@
     }
 
     .error-template h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
       color: #495057;
     }
@@ -83,8 +80,8 @@
 
     .error-actions .btn {
       margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 1rem;
+      padding: 12px 24px;
+      font-size: 1.1rem;
     }
 
     @media (max-width: 768px) {
@@ -93,7 +90,7 @@
       }
 
       .error-template h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
 
       .error-details {
@@ -101,8 +98,8 @@
       }
 
       .error-actions .btn {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+        font-size: 1rem;
+        padding: 10px 20px;
       }
     }
   </style>
@@ -113,19 +110,18 @@
     <h1>Oops!</h1>
     <h2>404 Not Found</h2>
     <div class="error-details">
-      Sorry, the page you are looking for doesn't exist!
+      Sorry, the page you are looking for doesn't exist.
     </div>
     <div class="error-actions">
-      <a href="https://typeblitz.netlify.app/" class="btn btn-primary">Take Me Home</a>
+      <a href="https://typeblitz.netlify.app/" class="btn btn-primary">Go to Homepage</a>
       <a href="https://formsubmit.co/el/fokemo" class="btn btn-secondary">Contact Support</a>
     </div>
   </div>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"
-    async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js" async></script>
 
-  <!-- LocalStorage Clear -->
+  <!-- Clear LocalStorage on Page Unload -->
   <script>
     window.addEventListener('beforeunload', function () {
       window.localStorage.clear();
