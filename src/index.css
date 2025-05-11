@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black background */
+    --foreground: 0 0% 100%; /* White text */
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 227 34% 51%; /* #5870ac */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 0% 18%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+
+    --ring: 227 34% 51%; /* #5870ac */
+    --radius: 0.75rem;
+
+    /* Optional enhancements */
+    --neon: 170 100% 60%; /* Teal glow for neon effects */
+    --ring-offset: 0 0% 0%;
+    --ring-offset-background: 0 0% 0%;
+    --shadow: 0 0% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  .glass {
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+
+  .glass-card {
+    @apply glass hover:bg-black/30 transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon to-white text-transparent bg-clip-text;
+  }
+
+  .btn-glow {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-z-10 before:bg-neon/20 before:blur-xl before:transition-all hover:before:bg-neon/30;
+  }
+
+  .hover-lift {
+    @apply transition-all hover:-translate-y-1 hover:shadow-lg duration-300;
+  }
+
+  .typing-container {
+    @apply relative;
+  }
+
+  .typing-text {
+    @apply overflow-hidden whitespace-nowrap border-r-4 border-neon pr-1 animate-typing;
+  }
+
+  .typing-cursor {
+    @apply animate-blinking-cursor;
+  }
+
+  .parallax {
+    @apply relative transform transition-transform duration-700;
+  }
+
+  .neumorph {
+    @apply bg-dark rounded-xl shadow-[8px_8px_16px_rgba(0,0,0,0.6),-8px_-8px_16px_rgba(39,39,39,0.3)] hover:shadow-[12px_12px_20px_rgba(0,0,0,0.7),-12px_-12px_20px_rgba(39,39,39,0.4)] transition-shadow duration-300;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-gradient;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-muted-foreground mb-12 max-w-2xl mx-auto;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neon/50 rounded-full hover:bg-neon/70 transition-colors;
+  }
+}

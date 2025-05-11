@@ -1,4 +1,3 @@
-
 # ✨ **TypeBlitz** ✨
 
 TypeBlitz is a game-changing, **FREE** app designed to elevate your typing skills effortlessly 🚀. With its sleek and minimalistic design, it's never been easier to boost your speed and accuracy in a fun and interactive way! 🎉
