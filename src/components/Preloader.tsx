@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 
 const Preloader = () => {
@@ -17,7 +18,6 @@ const Preloader = () => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-dark transition-opacity duration-700">
       <div className="relative w-32 h-32 mb-6">
-        {/* ✅ Add your GIF here */}
         <img
           src="/assets/TypeBlitz-gif.gif"
           alt="Loading..."

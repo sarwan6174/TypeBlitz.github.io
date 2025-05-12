@@ -1,7 +1,13 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, FileUp, FilePlus, File, ShieldCheck, Check } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Download, FileUp, FilePlus, ShieldCheck, Check } from "lucide-react";
+import { 
+  Tooltip, 
+  TooltipContent, 
+  TooltipProvider, 
+  TooltipTrigger 
+} from "@/components/ui/tooltip";
 
 const Installation = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -62,9 +68,9 @@ const Installation = () => {
             icon={<ShieldCheck className="w-5 h-5 text-neon" />}
             title="Step 4"
             description={
-              <>
-                If Windows shows a warning, click <strong>"More Info" → "Run Anyway"</strong>.
-                <TooltipProvider>
+              <TooltipProvider>
+                <>
+                  If Windows shows a warning, click <strong>"More Info" → "Run Anyway"</strong>.
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <button
@@ -75,12 +81,12 @@ const Installation = () => {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent className="w-64 p-3">
-                      Windows might warn you because the app isn't digitally signed. Don’t worry —
+                      Windows might warn you because the app isn't digitally signed. Don't worry —
                       TypeBlitz is 100% safe and clean.
                     </TooltipContent>
                   </Tooltip>
-                </TooltipProvider>
-              </>
+                </>
+              </TooltipProvider>
             }
           />
 

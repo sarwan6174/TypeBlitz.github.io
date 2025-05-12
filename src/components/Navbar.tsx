@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-2">
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/assets/images/TypeBlitz.png" // Update this path to your actual logo location
+              src="/assets/images/TypeBlitz.png"
               alt="TypeBlitz Logo"
               className="w-9 h-9 object-contain rounded-full"
             />
