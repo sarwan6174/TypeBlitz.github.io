@@ -19,7 +19,7 @@ const screenshotData = [
   {
     title: "Performance Stats",
     description: "View detailed analytics of your typing performance.",
-    image: "https://placehold.co/600x400/222/E6FF00?text=Stats&font=montserrat",
+    image: "assets/images/screenshots/performance-history.webp",
   },
   {
     title: "Auto Update Check",
