@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const LATEST_VERSION = "v1.4-stable";  // Updated version
 const LATEST_VERSION_DISPLAY = "v1.4-stable";  // Updated version
-const RELEASE_DATE = "May 14, 2025";
+const RELEASE_DATE = "May 16, 2025";
 
 const olderVersions = [
   { version: "v1.2-beta", label: "Version 1.2 (Beta)" },
